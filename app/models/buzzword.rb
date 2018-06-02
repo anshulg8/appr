@@ -1,0 +1,2 @@
+class Buzzword < ApplicationRecord
+end

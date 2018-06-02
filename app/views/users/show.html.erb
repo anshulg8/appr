@@ -1,0 +1,16 @@
+<h2><%= @user.name %> <small>(<%= @user.email %>)</small> </h2>
+<%= render 'follow_form' if current_user %>
+<h3>Company: <small><%= @user.company %></small></h3>
+<h2><%= @user.following.count %> Following</h2>
+<h2><%= @user.followers.count %> Followers</h2>
+ <br>
+<%= @user.microposts.each do |micropost| %>
+  <h4><%= micropost.content %><br> <small class="author">Submitted <%= time_ago_in_words(micropost.created_at) %> ago</small></h4>
+  <% if micropost.user == current_user -%>
+  	<div class="btn-group">
+  		<%= link_to 'Edit', edit_micropost_path(micropost), class: "btn btn-success" %>
+  		<%= link_to 'Delete', micropost, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+  	</div>
+  <% end %>
+  <br><br>
+<% end %>

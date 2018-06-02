@@ -1,0 +1,8 @@
+<% @microposts.each do |micropost| %>
+  <div class="micropost row clearfix">
+    <h2>
+      <%= micropost.content %><br>
+      <small class="author">Submitted <%= time_ago_in_words(micropost.created_at) %> ago by <%= link_to micropost.user.name, "/users/#{micropost.user.id}" %></small>
+    </h2>
+  </div>
+<% end %>
